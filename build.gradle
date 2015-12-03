@@ -1,0 +1,35 @@
+buildscript {
+    ext.kotlin_version = '1.0.0-beta-2423'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+group 'com.enalta'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'kotlin'
+
+repositories {
+    mavenCentral()
+
+    // Paho release repo
+    maven {
+        url = 'https://repo.eclipse.org/content/repositories/paho-releases/'
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    compile 'org.bouncycastle:bcprov-jdk16:1.45'
+}
+
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+}
